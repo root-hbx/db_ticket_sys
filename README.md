@@ -155,6 +155,11 @@ python3 manage.py runserver
 
 ### 5 管理员界面
 
+默认的管理员账户:
+
+- 用户名: admin
+- 密码: 123456
+
 ![管理员 admin 登录账号](http://upload-images.jianshu.io/upload_images/1877813-bfe34ac3da390ca0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 在前面的 login_user 函数中已经有过判定，如果登录用户是管理员，加载航空公司的财务页面。
