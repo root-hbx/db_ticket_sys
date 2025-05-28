@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>机票预订系统</title>
+    <title>数据库大作业: 订机票</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -32,18 +32,18 @@
 {#</nav>#}
 
 <div class="container-fluid" style="position:absolute;margin-top:10%;width: 35%;left: 5%">
-    <h1 style="color: white">Where are we flying now ?</h1>
+    <h1 style="color: black">鞋城旅行: 机票查询系统</h1>
     <br>
     <form class="form-horizontal" role="form" action="{% url 'booksystem:result' %}" method="post">
         {% csrf_token %}
         <div class="input-group">
-            <label for="leave_city" class="input-group-addon">出发城市</label>   <!--input必须要指定name-->
-            <input id="leave_city" type="text" name="leave_city" class="form-control" placeholder="City">
+            <label for="leave_city" class="input-group-addon">出发地</label>   <!--input必须要指定name-->
+            <input id="leave_city" type="text" name="leave_city" class="form-control" placeholder="城市名称">
         </div>
         <br>
         <div class="input-group">
-            <label for="arrive_city" class="input-group-addon">到达城市</label>
-            <input id="arrive_city" type="text" name="arrive_city" class="form-control" placeholder="City">
+            <label for="arrive_city" class="input-group-addon">目标地</label>
+            <input id="arrive_city" type="text" name="arrive_city" class="form-control" placeholder="城市名称">
         </div>
         <br>
         <div class="input-group">
@@ -52,7 +52,7 @@
         </div>
         <br>
         <center>
-            <button type="submit" class="btn btn-success">Let's Go</button>
+            <button type="submit" class="btn btn-success">数据库大作业, 启动!</button>
         </center>
     </form>
 </div>
