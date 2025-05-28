@@ -31,13 +31,12 @@
 {#    </div>#}
 {#</nav>#}
 
-<div class="container-fluid" style="position:absolute;margin-top:10%;width: 35%;left: 5%">
-    <h1 style="color: black">鞋城旅行: 机票查询系统</h1>
-    <br>
+<div class="container-fluid" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width: 400px; background: rgba(255,255,255,0.9); padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <h1 style="color: black; text-align: center; margin-bottom: 30px;">鞋城旅行: 机票查询系统</h1>
     <form class="form-horizontal" role="form" action="{% url 'booksystem:result' %}" method="post">
         {% csrf_token %}
         <div class="input-group">
-            <label for="leave_city" class="input-group-addon">出发地</label>   <!--input必须要指定name-->
+            <label for="leave_city" class="input-group-addon">出发地</label>
             <input id="leave_city" type="text" name="leave_city" class="form-control" placeholder="城市名称">
         </div>
         <br>
