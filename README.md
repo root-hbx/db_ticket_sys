@@ -1,16 +1,93 @@
-注册和登录界面都学习这位仁兄的 [buckyroberts-Viberr](https://github.com/buckyroberts/Viberr)
+# 鞋城旅行: 高铁查询-订票一站式系统
 
-## 五、界面设计
+Before everything:
 
-### 5.1 欢迎界面
+```sh
+conda activate VENV_NAME
+# 运行的必要条件
+pip3 install Django==3.1.14
+pip3 install pymysql
+```
 
-![欢迎界面](http://upload-images.jianshu.io/upload_images/1877813-c078119ecf8b22bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+确保: 安装成功
+
+```sh
+brew services start mysql  
+brew services list | grep mysql
+```
+
+确保:
+
+```sh
+❯ mysql --version                  
+mysql  Ver 9.2.0 for macos12 on arm64 (Homebrew)
+
+❯ brew services list | grep mysql
+mysql         started         huluobo ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
+```
+
+## Quick Start
+
+创建数据库:
+
+```sh
+# 使用root用户登录MySQL
+mysql -u root -p
+
+# 删除现有数据库
+DROP DATABASE IF EXISTS Flight;
+DROP DATABASE IF EXISTS flight1;
+
+# 创建Flight1数据库
+CREATE DATABASE Flight1;
+
+# 给admin用户授权访问Flight1数据库
+GRANT ALL PRIVILEGES ON Flight1.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;
+
+# 退出MySQL
+EXIT;
+```
+
+导入现成的“车次”数据:
+
+```sh
+# 使用root用户导入数据（或者用admin用户，现在应该有权限了）
+mysql -u root -p Flight1 < /Users/huluobo/Desktop/xjtu-homework/FlightTicket_Database/Flight1.sql
+# 或者用admin用户
+mysql -u admin -p Flight1 < /Users/huluobo/Desktop/xjtu-homework/FlightTicket_Database/Flight1.sql
+```
+
+测试导入情况:
+
+```sh
+# 使用admin用户测试连接
+mysql -u admin -p Flight1
+
+# 在MySQL中验证
+SELECT DATABASE();
+SELECT COUNT(*) FROM booksystem_flight;
+# 如果是60, 则没问题
+```
+
+渲染前的测试:
+
+```
+python3 manage.py check
+python3 manage.py migrate
+python3 manage.py runserver
+```
+
+## 基础使用
+
+### 1 欢迎界面
 
 拟定一趟行程（长沙→上海 2017/4/2）
 
 ![输入行程](http://upload-images.jianshu.io/upload_images/1877813-8e7d67d4ba9be92c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-### 5.2 查询界面
+### 2 查询界面
+
 用户 Let’s Go 之后，加载查询结果页面。
 
 ![查询成功界面](http://upload-images.jianshu.io/upload_images/1877813-c607acdbf2f65b32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -26,7 +103,7 @@
 
 ![查询失败界面](http://upload-images.jianshu.io/upload_images/1877813-b01972455fe041a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-### 5.3 订票界面
+### 3 订票界面
 
 ![点击订票按钮进行订票](http://upload-images.jianshu.io/upload_images/1877813-f31476f891dae2ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -65,7 +142,7 @@
 
 ![订票冲突页面](http://upload-images.jianshu.io/upload_images/1877813-9c2f7a2ece954b5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-### 5.4 退票界面
+### 4 退票界面
 
 在用户的个人中心，可以进行退票。
 
@@ -76,7 +153,7 @@
 
 ![退票后的用户个人中心](http://upload-images.jianshu.io/upload_images/1877813-ef2d63e1012518d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-### 5.5 管理员界面
+### 5 管理员界面
 
 ![管理员 admin 登录账号](http://upload-images.jianshu.io/upload_images/1877813-bfe34ac3da390ca0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -90,10 +167,13 @@
 
 ![管理员页面 - 公司财务信息](http://upload-images.jianshu.io/upload_images/1877813-cc4afc25d37c4ef9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-### 5.6 后台管理界面
+### 6 后台管理界面
 
 链接尾部输入 admin 进入后台管理
 
+```
+http://127.0.0.1:8000/booksystem/admin/
+```
 
 ![进入后台](http://upload-images.jianshu.io/upload_images/1877813-5b533403b65c584e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
