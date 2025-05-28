@@ -15,13 +15,13 @@
 
 ![查询成功界面](http://upload-images.jianshu.io/upload_images/1877813-c607acdbf2f65b32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-默认的机票信息按照价格升序排列，用户通过点击机票信息上方的字段可以选择按照起飞时间或者到达时间升序排列，如下图，注意后两行的变化。
+默认的机票信息按照价格升序排列，用户通过点击机票信息上方的字段可以选择按照出发时间或者到达时间升序排列，如下图，注意后两行的变化。
 
 
-![查询结果按照起飞时间升序排列](http://upload-images.jianshu.io/upload_images/1877813-59e9c048ac02d75b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![查询结果按照出发时间升序排列](http://upload-images.jianshu.io/upload_images/1877813-59e9c048ac02d75b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-如果用户需要的航班数据库中不存在，就反馈错误信息。
-将用户的目的地修改成中国（数据库中没有这趟航班）进行测试。
+如果用户需要的车次数据库中不存在，就反馈错误信息。
+将用户的目的地修改成中国（数据库中没有这趟车次）进行测试。
 
 
 ![查询失败界面](http://upload-images.jianshu.io/upload_images/1877813-b01972455fe041a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -45,7 +45,7 @@
 
 ![登录成功之后](http://upload-images.jianshu.io/upload_images/1877813-1ce7b06008a254f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-用户再次点击订票，如果用户尚未订过该趟航班，加载订票确认页面，如果用户已经订过了，加载订票冲突页面。
+用户再次点击订票，如果用户尚未订过该趟车次，加载订票确认页面，如果用户已经订过了，加载订票冲突页面。
 
 
 ![正常订票页面](http://upload-images.jianshu.io/upload_images/1877813-84ddfba39dca9100.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -106,10 +106,10 @@
 
 ![后台界面](http://upload-images.jianshu.io/upload_images/1877813-5d97aa787c87e85d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-航班信息管理，显示所有航班信息，可以增删改查。
+车次信息管理，显示所有车次信息，可以增删改查。
 
-![航班信息管理](http://upload-images.jianshu.io/upload_images/1877813-14106ac6b678c1df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![车次信息管理](http://upload-images.jianshu.io/upload_images/1877813-14106ac6b678c1df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-旅客信息管理，操作同航班信息管理，注册的用户的信息都会保存在这里。
+旅客信息管理，操作同车次信息管理，注册的用户的信息都会保存在这里。
 
 ![旅客信息管理](http://upload-images.jianshu.io/upload_images/1877813-0d2f61b05e1b9393.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

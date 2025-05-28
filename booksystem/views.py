@@ -23,9 +23,9 @@ ADMIN_ID = 1
 # 统计航空公司每周、每月，每年营业收入情况。
 def admin_finance(request):
     all_flights = Flight.objects.all()
-    all_flights = sorted(all_flights, key=attrgetter('leave_time'))  # 将所有航班按照起飞时间排序
+    all_flights = sorted(all_flights, key=attrgetter('leave_time'))  # 将所有车次按照出发时间排序
 
-    # 将航班每天的输入打上不同的时间标签 [周，月，日]
+    # 将车次每天的输入打上不同的时间标签 [周，月，日]
     week_day_incomes = []
     month_day_incomes = []
     year_day_incomes = []
@@ -35,7 +35,7 @@ def admin_finance(request):
     month_set = set()
     year_set = set()
     for flight in all_flights:
-        if flight.income > 0:  # 只统计有收入的航班
+        if flight.income > 0:  # 只统计有收入的车次
             # 打上周标签
             this_week = flight.leave_time.strftime('%W')  # datetime获取周
             week_day_incomes.append((this_week, flight.income))  # 添加元组(week, income)
@@ -54,7 +54,7 @@ def admin_finance(request):
     week_incomes = []
     for week in week_set:
         income = sum(x[1] for x in week_day_incomes if x[0] == week)  # 同周次的income求和
-        flight_sum = sum(1 for x in week_day_incomes if x[0] == week)  # 同周次的航班总数目
+        flight_sum = sum(1 for x in week_day_incomes if x[0] == week)  # 同周次的车次总数目
         week_income = IncomeMetric(week, flight_sum, income)  # 将数据存储到IncomeMetric类中，方便jinja语法
         week_incomes.append(week_income)
     week_incomes = sorted(week_incomes, key=attrgetter('metric'))  # 将List类型的 week_incomes 按周次升序排列
@@ -119,17 +119,17 @@ def admin_finance(request):
 
 
 # 显示用户订单信息
-# 航班信息，退票管理
+# 车次信息，退票管理
 def user_operation(request):
     if request.user.is_authenticated:
-        # 如果用户是管理员，render公司航班收入统计信息页面 admin_finance
+        # 如果用户是管理员，render公司车次收入统计信息页面 admin_finance
         # if request.user.id == ADMIN_ID:
         #     #context = admin_finance(request)  # 获取要传入前端的数据
         #     context = admin_finance(request)
         #     return render(request, 'booksystem/admin_finance.html', context)
         # 如果用户是普通用户，render用户的机票信息 user_info
         # else:
-            booked_flights = Flight.objects.filter(user=request.user)  # 从 booksystem_flight_user 表过滤出该用户订的航班
+            booked_flights = Flight.objects.filter(user=request.user)  # 从 booksystem_flight_user 表过滤出该用户订的车次
             context = {
                 'booked_flights': booked_flights,
                 'username': request.user.username,  # 导航栏信息更新
@@ -140,7 +140,7 @@ def user_operation(request):
 #个人账单
 def user_bill(request):
     if request.user.is_authenticated:
-        # 如果用户是管理员，render公司航班收入统计信息页面 admin_finance
+        # 如果用户是管理员，render公司车次收入统计信息页面 admin_finance
         if request.user.id == ADMIN_ID:
             #context = admin_finance(request)  # 获取要传入前端的数据
             context = admin_finance(request)
@@ -168,7 +168,7 @@ def user_bill(request):
                     o.flight.leave_time, o.flight.price,
                     pay_information, fetch_information, refund_information)
                 order_set.add(order)
-            # booked_flights = Flight.objects.filter(user=request.user)  # 从 booksystem_flight_user 表过滤出该用户订的航班
+            # booked_flights = Flight.objects.filter(user=request.user)  # 从 booksystem_flight_user 表过滤出该用户订的车次
             context = {
                 'order_set': order_set,
                 'username': request.user.username,  # 导航栏信息更新
@@ -347,16 +347,16 @@ def result(request):
             passenger_ltime = datetime.datetime.combine(passenger_ldate, datetime.time())
             print(passenger_ltime)
 
-            # filter 可用航班
+            # filter 可用车次
             all_flights = Flight.objects.filter(leave_city=passenger_lcity, arrive_city=passenger_acity)
             usable_flights = []
             for flight in all_flights:  # off-set aware
                 flight.leave_time = flight.leave_time.replace(tzinfo=None)  # replace方法必须要赋值。。笑哭
-                if flight.leave_time.date() == passenger_ltime.date():  # 只查找当天的航班
+                if flight.leave_time.date() == passenger_ltime.date():  # 只查找当天的车次
                     usable_flights.append(flight)
 
             # 按不同的key排序
-            usable_flights_by_ltime = sorted(usable_flights, key=attrgetter('leave_time'))  # 起飞时间从早到晚
+            usable_flights_by_ltime = sorted(usable_flights, key=attrgetter('leave_time'))  # 出发时间从早到晚
             usable_flights_by_atime = sorted(usable_flights, key=attrgetter('arrive_time'))
             usable_flights_by_price = sorted(usable_flights, key=attrgetter('price'))  # 价格从低到高
 

@@ -36,8 +36,8 @@
             <h1>尊敬的旅客</h1>
             <div id="info_body" style="margin-left: 50px;margin-right: 50px">
                 <p>
-                    您选择了 <strong style="font-size: large"> {{ flight.name }} </strong> 次航班，
-                    该航班还有余票
+                    您选择了 <strong style="font-size: large"> {{ flight.name }} </strong> 次车次，
+                    该车次还有余票
                     <strong id="remain_seats"
                             style="font-size: xx-large;color: #ff6600;font-style: italic">{{ surplus }}</strong>
                     张。
@@ -45,10 +45,10 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th style="text-align: center">航班</th>
-                        <th style="text-align: center">起飞机场</th>
-                        <th style="text-align: center">到达机场</th>
-                        <th style="text-align: center">起飞时间</th>
+                        <th style="text-align: center">车次</th>
+                        <th style="text-align: center">出发车站</th>
+                        <th style="text-align: center">目的地车站</th>
+                        <th style="text-align: center">出发时间</th>
                         <th style="text-align: center">到达时间</th>
                         <th style="text-align: center">价格</th>
                     </tr>
@@ -56,8 +56,10 @@
                     <tbody style="text-align: center">
                     <tr>
                         <td>{{ flight.name }}</td>
-                        <td>{{ flight.leave_city }}{{ flight.leave_airport }}</td>
-                        <td>{{ flight.arrive_city }}{{ flight.arrive_airport }}</td>
+                        <!-- <td>{{ flight.leave_city }}{{ flight.leave_airport }}</td>
+                        <td>{{ flight.arrive_city }}{{ flight.arrive_airport }}</td> -->
+                        <td>{{ flight.leave_airport }}</td>
+                        <td>{{ flight.arrive_airport }}</td>
                         <td>{{ flight.leave_time }}</td>
                         <td>{{ flight.arrive_time }}</td>
                         <td>￥{{ flight.price }}</td>
@@ -67,13 +69,13 @@
 
                 <div id="book_success" style="display: none">
                     <p style="color: green;font-size: large;font-weight: bold">
-                        您已成功订购了此次航班，请保管好航班信息，祝您旅途愉快！
+                        您已成功订购了此次车次，请保管好车次信息，祝您旅途愉快！
                     </p>
                 </div>
 
                 <div id="book_failure" style="display: none">
                     <p style="color: red;font-size: large;font-weight: bold">
-                        该航班已无余票，请选择其他航班，祝您旅途愉快！
+                        该车次已无余票，请选择其他车次，祝您旅途愉快！
                     </p>
                 </div>
 

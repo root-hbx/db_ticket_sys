@@ -141,10 +141,10 @@
         </div>
 
         <!--标题行(标明4种排序方式)-->
-        <div class="search_head" id="search_head" style="display: {{ dis_search_head }}">
+        <div class="search_head" id="search_head" style="display: '{{ dis_search_head }}'">
             <div class="col-sm-12">
-                <button class="col-sm-3 btn btn-primary">航班信息</button>
-                <button class="col-sm-2 btn btn-success" onclick="search_by_ltime()">起飞时间</button>
+                <button class="col-sm-3 btn btn-primary">车次信息</button>
+                <button class="col-sm-2 btn btn-success" onclick="search_by_ltime()">出发时间</button>
                 <button class="col-sm-2 btn btn-danger" onclick="search_by_atime()">到达时间</button>
                 <button class="col-sm-2 btn btn-primary">座位类型</button>
                 <button class="col-sm-3 btn btn-warning" onclick="search_by_price()">价格</button>
@@ -156,7 +156,7 @@
              style="margin-top: 20px; background-color:white;display: {{ dis_search_failure }}">
             <h1>尊敬的旅客</h1>
             <p style="margin-left: 50px">
-                很抱歉，我们目前没有开通这趟航班，请尝试选择其他航班，祝您旅途愉快！
+                很抱歉，我们目前没有开通这趟车次，请尝试选择其他车次，祝您旅途愉快！
             </p>
         </div>
 
@@ -203,7 +203,7 @@
             {% endfor %}
         </div>
 
-        <!--按照起飞时间排序-->
+        <!--按照出发时间排序-->
         <div class="search_result_by_ltime" id="result_by_ltime" style="display: none">
             {% for flight in usable_flights_by_ltime %}
                 <div class="one_line">
