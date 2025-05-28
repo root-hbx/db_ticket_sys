@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Author: XXG
-# @Date:   2019-06-07 09:14:20
+# @Date:   2024-06-07 09:14:20
 # @Last Modified by:   XXG
-# @Last Modified time: 2019-06-07 10:52:40
+# @Last Modified time: 2024-06-07 10:52:40
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt

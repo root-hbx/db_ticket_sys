@@ -3,7 +3,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$150000$7dZAte2wXF1A$hwxhBj8GS5EpDESabrbZDbAQ6Bld+0eP4+Rr0lIB3XA=",
-        "last_login": "2019-05-24T19:23:41.302",
+        "last_login": "2024-05-24T19:23:41.302",
         "is_superuser": true,
         "username": "admin",
         "first_name": "",
@@ -161,7 +161,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$150000$mUqgD9NKrIL4$UTJinhI8k6RkjrLnl8cmNXwa6UviSwIsLJraZ77Z2BU=",
-        "last_login": "2019-05-24T19:20:15.792",
+        "last_login": "2024-05-24T19:20:15.792",
         "is_superuser": false,
         "username": "1",
         "first_name": "",
@@ -169,7 +169,7 @@
         "email": "169506187@qq.com",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2019-05-24T12:06:31.246",
+        "date_joined": "2024-05-24T12:06:31.246",
         "groups": [],
         "user_permissions": []
     }
@@ -178,7 +178,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$150000$SKTd9HFrVgIn$8DkKkzWqXItFTfPVC9x0fWGX1GKVTTm6I5+hLqyIWrI=",
-        "last_login": "2019-05-24T19:20:55.332",
+        "last_login": "2024-05-24T19:20:55.332",
         "is_superuser": false,
         "username": "2",
         "first_name": "",
@@ -186,7 +186,7 @@
         "email": "123@qq.com",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2019-05-24T16:30:29.217",
+        "date_joined": "{% load static %}-05-24T16:30:29.217",
         "groups": [],
         "user_permissions": []
     }
@@ -204,7 +204,7 @@
     "pk": "81if7ih50y9vnj4jb9sh9mlbtdpiji7q",
     "fields": {
         "session_data": "YzNhNWMyNzUwYTQxZTFjMzZlNzJiMTU1NTZmY2IwMGE2NDhmZDc3Zjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3MTRhMGE5MDVjN2NjMWQ4YjliODNkZmI4ZTIyNjBjZGRiMzlhOGUzIn0=",
-        "expire_date": "2019-06-07T17:36:11.180"
+        "expire_date": "2024-06-07T17:36:11.180"
     }
 },
 {
@@ -220,7 +220,7 @@
     "pk": "9dbigu58k0h2t22js2rz6ghbi7tq6mit",
     "fields": {
         "session_data": "MmRiZTNlOTQ0OTE5OTk2ZGE4NjY5MTU3MzZiYTU0NGZmZDIzOWMzMTp7Il9hdXRoX3VzZXJfaWQiOiIzIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2ZGZkMzkwMmRlZjQ2YzZjN2I0YWM0MGNmNjkxNjcyNWIwZmRhNTU2In0=",
-        "expire_date": "2019-06-07T18:30:01.775"
+        "expire_date": "2024-06-07T18:30:01.775"
     }
 },
 {
@@ -228,7 +228,7 @@
     "pk": "hr0lmon252zccifn5jml712lyi8x3zhk",
     "fields": {
         "session_data": "MmRiZTNlOTQ0OTE5OTk2ZGE4NjY5MTU3MzZiYTU0NGZmZDIzOWMzMTp7Il9hdXRoX3VzZXJfaWQiOiIzIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2ZGZkMzkwMmRlZjQ2YzZjN2I0YWM0MGNmNjkxNjcyNWIwZmRhNTU2In0=",
-        "expire_date": "2019-06-07T19:08:14.692"
+        "expire_date": "2024-06-07T19:08:14.692"
     }
 },
 {
@@ -276,7 +276,7 @@
     "pk": "z6tjar565t5a84ngu95suzq72w8wr9q5",
     "fields": {
         "session_data": "YzNhNWMyNzUwYTQxZTFjMzZlNzJiMTU1NTZmY2IwMGE2NDhmZDc3Zjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3MTRhMGE5MDVjN2NjMWQ4YjliODNkZmI4ZTIyNjBjZGRiMzlhOGUzIn0=",
-        "expire_date": "2019-06-07T19:23:41.340"
+        "expire_date": "2024-06-07T19:23:41.340"
     }
 },
 {
@@ -630,8 +630,8 @@
         "arrive_city": "\u4e0a\u6d77",
         "leave_airport": "\u6b66\u6c49\u5929\u6cb3\u673a\u573aT1",
         "arrive_airport": "\u6d66\u4e1c\u56fd\u9645\u673a\u573aT2",
-        "leave_time": "2019-05-24T07:55:00",
-        "arrive_time": "2019-05-24T09:55:00",
+        "leave_time": "2024-05-24T07:55:00",
+        "arrive_time": "2024-05-24T09:55:00",
         "capacity": 0,
         "price": 480.0,
         "book_sum": 3,
@@ -1460,7 +1460,7 @@
     "model": "admin.logentry",
     "pk": 52,
     "fields": {
-        "action_time": "2019-05-24T17:35:47.815",
+        "action_time": "2024-05-24T17:35:47.815",
         "user": [
             "admin"
         ],
@@ -1478,7 +1478,7 @@
     "model": "admin.logentry",
     "pk": 53,
     "fields": {
-        "action_time": "2019-05-24T17:35:47.853",
+        "action_time": "2024-05-24T17:35:47.853",
         "user": [
             "admin"
         ],
@@ -1496,7 +1496,7 @@
     "model": "admin.logentry",
     "pk": 54,
     "fields": {
-        "action_time": "2019-05-24T19:16:29.979",
+        "action_time": "2024-05-24T19:16:29.979",
         "user": [
             "admin"
         ],
@@ -1514,7 +1514,7 @@
     "model": "admin.logentry",
     "pk": 55,
     "fields": {
-        "action_time": "2019-05-24T19:16:45.969",
+        "action_time": "2024-05-24T19:16:45.969",
         "user": [
             "admin"
         ],
@@ -1532,7 +1532,7 @@
     "model": "admin.logentry",
     "pk": 56,
     "fields": {
-        "action_time": "2019-05-24T19:16:48.930",
+        "action_time": "2024-05-24T19:16:48.930",
         "user": [
             "admin"
         ],
@@ -1550,7 +1550,7 @@
     "model": "admin.logentry",
     "pk": 57,
     "fields": {
-        "action_time": "2019-05-24T19:17:10.643",
+        "action_time": "2024-05-24T19:17:10.643",
         "user": [
             "admin"
         ],
