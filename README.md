@@ -80,78 +80,69 @@ python3 manage.py runserver
 
 ## 基础使用
 
+![alt text](image.png)
+
 ### 1 欢迎界面
 
-拟定一趟行程（长沙→上海 2017/4/2）
+拟定一趟行程（南昌→合肥 2025/06/15）
 
-![输入行程](http://upload-images.jianshu.io/upload_images/1877813-8e7d67d4ba9be92c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![alt text](image-1.png)
 
 ### 2 查询界面
 
-用户 Let’s Go 之后，加载查询结果页面。
+（1）默认的票价信息按照价格升序排列，用户通过点击车票信息上方的字段可以选择按照出发时间或者到达时间升序排列
 
-![查询成功界面](http://upload-images.jianshu.io/upload_images/1877813-c607acdbf2f65b32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![alt text](image-2.png)
 
-默认的机票信息按照价格升序排列，用户通过点击机票信息上方的字段可以选择按照出发时间或者到达时间升序排列，如下图，注意后两行的变化。
+（2）如果用户需要的车次数据库中不存在，就反馈错误信息
 
-
-![查询结果按照出发时间升序排列](http://upload-images.jianshu.io/upload_images/1877813-59e9c048ac02d75b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-如果用户需要的车次数据库中不存在，就反馈错误信息。
-将用户的目的地修改成中国（数据库中没有这趟车次）进行测试。
-
-
-![查询失败界面](http://upload-images.jianshu.io/upload_images/1877813-b01972455fe041a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![alt text](image-3.png)
 
 ### 3 订票界面
 
-![点击订票按钮进行订票](http://upload-images.jianshu.io/upload_images/1877813-f31476f891dae2ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+用户注册与登陆
 
-由于用户还没有登录，会直接反馈到登录界面。
+![alt text](image-14.png)
 
+查询车次
 
-![登录页面](http://upload-images.jianshu.io/upload_images/1877813-19d3851f0df7eb48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![alt text](image-4.png)
 
-由于用户尚未注册，用户在该页面点击 Click here 进入注册账号页面，完成账号注册。 
+点击“订票”
 
+![alt text](image-5.png)
 
-![注册页面](http://upload-images.jianshu.io/upload_images/1877813-78e026c005cb9b8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+点击“确认”，确定订单
 
-用户注册完账号直接加载到查询页面。
+![alt text](image-6.png)
 
+点击“账单”，查看支付状态 （目前还是“待支付”）
 
-![登录成功之后](http://upload-images.jianshu.io/upload_images/1877813-1ce7b06008a254f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![alt text](image-7.png)
 
-用户再次点击订票，如果用户尚未订过该趟车次，加载订票确认页面，如果用户已经订过了，加载订票冲突页面。
+前往“个人中心” >> “付款”
 
+![alt text](image-8.png)
 
-![正常订票页面](http://upload-images.jianshu.io/upload_images/1877813-84ddfba39dca9100.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![alt text](image-9.png)
 
-在正常订票页面点击确认，完成订票。
+![alt text](image-10.png)
 
+付款成功，现在准备“取票”
 
-![正常订票页面完成订票](http://upload-images.jianshu.io/upload_images/1877813-d0cac0d501cfb050.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![alt text](image-11.png)
 
-在个人中心用户可以查看自己的订票信息。
+依据现实情况，进行合理的“取票时间”限制
 
-
-![用户个人中心](http://upload-images.jianshu.io/upload_images/1877813-070977fbe83f6167.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-如果用户选择了自己已经订过的机票，加载订票冲突页面。
-
-
-![订票冲突页面](http://upload-images.jianshu.io/upload_images/1877813-9c2f7a2ece954b5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![alt text](image-12.png)
 
 ### 4 退票界面
 
-在用户的个人中心，可以进行退票。
+同理，可以在用户的个人中心进行退票
 
-![退票页面](http://upload-images.jianshu.io/upload_images/1877813-010c33405c8e8794.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![alt text](image-13.png)
 
-选择确认，完成退票，用户订票信息刷新。
-
-
-![退票后的用户个人中心](http://upload-images.jianshu.io/upload_images/1877813-ef2d63e1012518d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+选择确认，完成退票，用户订票信息刷新
 
 ### 5 管理员界面
 
@@ -160,17 +151,17 @@ python3 manage.py runserver
 - 用户名: admin
 - 密码: 123456
 
-![管理员 admin 登录账号](http://upload-images.jianshu.io/upload_images/1877813-bfe34ac3da390ca0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![alt text](image-15.png)
 
-在前面的 login_user 函数中已经有过判定，如果登录用户是管理员，加载航空公司的财务页面。
+代码逻辑中通过 `login_user` 函数中已经有过判定，如果登录用户是管理员，则此时加载财务页面:
 
+![alt text](image-16.png)
 
-![login_user 函数登录用户身份判定](http://upload-images.jianshu.io/upload_images/1877813-b62cc6784cd273f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+财务界面:
 
-管理员登录成功。
+![alt text](image-17.png)
 
-
-![管理员页面 - 公司财务信息](http://upload-images.jianshu.io/upload_images/1877813-cc4afc25d37c4ef9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+说明管理员登录成功
 
 ### 6 后台管理界面
 
@@ -180,21 +171,54 @@ python3 manage.py runserver
 http://127.0.0.1:8000/booksystem/admin/
 ```
 
-![进入后台](http://upload-images.jianshu.io/upload_images/1877813-5b533403b65c584e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![alt text](image-18.png)
 
-管理员登录账号
+管理员登录成功，现在进入系统管理后台!
 
+(1) 后台数据查看, 包括 User 和 Django 默认生成的数据:
 
-![管理员登录](http://upload-images.jianshu.io/upload_images/1877813-d2bfaf67531e5d9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![alt text](image-19.png)
 
-后台数据，包括 Flight，User 和 Django 默认生成的数据。
+比如: Users
 
-![后台界面](http://upload-images.jianshu.io/upload_images/1877813-5d97aa787c87e85d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![alt text](image-20.png)
 
-车次信息管理，显示所有车次信息，可以增删改查。
+比如: Orders
 
-![车次信息管理](http://upload-images.jianshu.io/upload_images/1877813-14106ac6b678c1df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+(2) 车次信息管理，显示所有车次信息，可以增删改查:
 
-旅客信息管理，操作同车次信息管理，注册的用户的信息都会保存在这里。
+![alt text](image-21.png)
 
-![旅客信息管理](http://upload-images.jianshu.io/upload_images/1877813-0d2f61b05e1b9393.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+比如: 新增车次:
+
+![alt text](image-26.png)
+
+![alt text](image-27.png)
+
+为确保添加进数据库，我们进数据库CLI检查一下:
+
+```sh
+mysql -u admin -p Flight1
+
+# 在MySQL中验证
+SELECT DATABASE();
+SELECT COUNT(*) FROM booksystem_flight;
+SELECT leave_city, arrive_city FROM booksyste
+```
+
+![alt text](image-28.png)
+
+发现现在变成61条了 :))
+
+(3) 旅客信息管理，操作同车次信息管理，注册的用户的信息都会保存在这里:
+
+![alt text](image-22.png)
+
+比如，新增用户:
+
+![alt text](image-23.png)
+
+![alt text](image-24.png)
+
+![alt text](image-25.png)
+
