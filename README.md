@@ -203,7 +203,7 @@ mysql -u admin -p Flight1
 # 在MySQL中验证
 SELECT DATABASE();
 SELECT COUNT(*) FROM booksystem_flight;
-SELECT leave_city, arrive_city FROM booksyste
+SELECT leave_city, arrive_city FROM booksystem_flight;
 ```
 
 ![alt text](./image/image-28.png)
