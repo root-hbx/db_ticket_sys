@@ -127,7 +127,7 @@ def user_operation(request):
         #     #context = admin_finance(request)  # 获取要传入前端的数据
         #     context = admin_finance(request)
         #     return render(request, 'booksystem/admin_finance.html', context)
-        # 如果用户是普通用户，render用户的机票信息 user_info
+        # 如果用户是普通用户，render用户的车票信息 user_info
         # else:
             booked_flights = Flight.objects.filter(user=request.user)  # 从 booksystem_flight_user 表过滤出该用户订的车次
             context = {
@@ -145,7 +145,7 @@ def user_bill(request):
             #context = admin_finance(request)  # 获取要传入前端的数据
             context = admin_finance(request)
             return render(request, 'booksystem/admin_finance.html', context)
-        # 如果用户是普通用户，render用户的机票信息 user_info
+        # 如果用户是普通用户，render用户的车票信息 user_info
         else:
             order_set = set()
             # flights = Flight.objects.filter(user=request.user)
@@ -198,7 +198,7 @@ def book_ticket(request, flight_id):
         # book_flight.html 点确认之后，request为 POST 方法，虽然没有传递什么值，但是传递了 POST 信号
         # 确认订票，flight数据库改变
 
-        # 验证一下，同样的机票只能订一次
+        # 验证一下，同样的车票只能订一次
         if request.method == 'POST':
             if flight.capacity > flight.book_sum:
                 flight.book_sum += 1

@@ -9,8 +9,8 @@ class Flight(models.Model):
 	name = models.CharField(max_length=100)  # 班次  南方航空CZ3969
 	leave_city = models.CharField(max_length=100, null=True)  # 离开城市
 	arrive_city = models.CharField(max_length=100, null=True)  # 到达城市
-	leave_airport = models.CharField(max_length=100, null=True)  # 离开的机场
-	arrive_airport = models.CharField(max_length=100, null=True)  # 到达的机场
+	leave_airport = models.CharField(max_length=100, null=True)  # 离开的车场
+	arrive_airport = models.CharField(max_length=100, null=True)  # 到达的车场
 	leave_time = models.DateTimeField(null=True)  # DateTimeField包括了DateField信息，并且添加了时间
 	arrive_time = models.DateTimeField(null=True)
 	capacity = models.IntegerField(default=0, null=True)  # 经济舱座位总数
