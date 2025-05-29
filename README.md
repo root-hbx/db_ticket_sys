@@ -53,9 +53,9 @@ EXIT;
 
 ```sh
 # 使用root用户导入数据（或者用admin用户，现在应该有权限了）
-mysql -u root -p Flight1 < /Users/huluobo/Desktop/xjtu-homework/FlightTicket_Database/Flight1.sql
+mysql -u root -p Flight1 < /Users/huluobo/Desktop/xjtu-homework/db-exp-4/Flight1.sql
 # 或者用admin用户
-mysql -u admin -p Flight1 < /Users/huluobo/Desktop/xjtu-homework/FlightTicket_Database/Flight1.sql
+mysql -u admin -p Flight1 < /Users/huluobo/Desktop/xjtu-homework/db-exp-4/Flight1.sql
 ```
 
 测试导入情况:
