@@ -1,0 +1,159 @@
+// --- Django Auth Tables ---
+
+Table auth_group {
+  id int [pk, increment]
+  name varchar(150) [unique, not null]
+}
+
+Table auth_permission {
+  id int [pk, increment]
+  name varchar(255) [not null]
+  content_type_id int [not null]
+  codename varchar(100) [not null]
+  // Indexes: UNIQUE KEY (content_type_id, codename)
+}
+
+Table auth_user {
+  id int [pk, increment]
+  password varchar(128) [not null]
+  last_login datetime(6)
+  is_superuser tinyint(1) [not null] // Typically boolean
+  username varchar(150) [unique, not null]
+  first_name varchar(30) [not null]
+  last_name varchar(150) [not null]
+  email varchar(254) [not null]
+  is_staff tinyint(1) [not null]    // Typically boolean
+  is_active tinyint(1) [not null]   // Typically boolean
+  date_joined datetime(6) [not null]
+}
+
+// --- Django Junction/Link Tables ---
+
+Table auth_group_permissions {
+  id int [pk, increment]
+  group_id int [not null]
+  permission_id int [not null]
+  // Indexes: UNIQUE KEY (group_id, permission_id)
+}
+
+Table auth_user_groups {
+  id int [pk, increment]
+  user_id int [not null]
+  group_id int [not null]
+  // Indexes: UNIQUE KEY (user_id, group_id)
+}
+
+Table auth_user_user_permissions {
+  id int [pk, increment]
+  user_id int [not null]
+  permission_id int [not null]
+  // Indexes: UNIQUE KEY (user_id, permission_id)
+}
+
+// --- Application Specific Tables (booksystem) ---
+
+Table booksystem_flight {
+  id int [pk, increment]
+  name varchar(100) [not null]
+  leave_city varchar(100)
+  arrive_city varchar(100)
+  leave_airport varchar(100)
+  arrive_airport varchar(100)
+  leave_time datetime(6)
+  arrive_time datetime(6)
+  capacity int
+  price double
+  book_sum int
+  income double
+  seat_type varchar(100) [not null]
+}
+
+Table booksystem_order {
+  id int [pk, increment]
+  is_fetch tinyint(1) [not null]     // Typically boolean
+  is_refund tinyint(1) [not null]    // Typically boolean
+  flight_id int [not null]
+  user_id int [not null]
+  creat_time datetime(6)
+  fetch_time datetime(6)
+  refund_time datetime(6)
+  can_modify tinyint(1) [not null]  // Typically boolean
+  is_pay tinyint(1) [not null]      // Typically boolean
+  pay_time datetime(6)
+}
+
+Table booksystem_flight_user {
+  id int [pk, increment]
+  flight_id int [not null]
+  user_id int [not null]
+  // Indexes: UNIQUE KEY (flight_id, user_id)
+}
+
+// --- Django Admin/System Tables ---
+
+Table django_content_type {
+  id int [pk, increment]
+  app_label varchar(100) [not null]
+  model varchar(100) [not null]
+  // Indexes: UNIQUE KEY (app_label, model)
+}
+
+Table django_admin_log {
+  id int [pk, increment]
+  action_time datetime(6) [not null]
+  object_id longtext
+  object_repr varchar(200) [not null]
+  action_flag smallint(5) [not null] // unsigned in SQL
+  change_message longtext [not null]
+  content_type_id int
+  user_id int [not null]
+}
+
+Table django_migrations {
+  id int [pk, increment]
+  app varchar(255) [not null]
+  name varchar(255) [not null]
+  applied datetime(6) [not null]
+}
+
+Table django_session {
+  session_key varchar(40) [pk]
+  session_data longtext [not null]
+  expire_date datetime(6) [not null]
+  // Indexes: KEY (expire_date)
+}
+
+// --- Relationships ---
+
+Ref: auth_group_permissions.group_id > auth_group.id
+Ref: auth_group_permissions.permission_id > auth_permission.id
+
+Ref: auth_permission.content_type_id > django_content_type.id
+
+Ref: auth_user_groups.user_id > auth_user.id
+Ref: auth_user_groups.group_id > auth_group.id
+
+Ref: auth_user_user_permissions.user_id > auth_user.id
+Ref: auth_user_user_permissions.permission_id > auth_permission.id
+
+Ref: booksystem_flight_user.flight_id > booksystem_flight.id
+Ref: booksystem_flight_user.user_id > auth_user.id
+
+Ref: booksystem_order.flight_id > booksystem_flight.id
+Ref: booksystem_order.user_id > auth_user.id
+
+Ref: django_admin_log.content_type_id > django_content_type.id
+Ref: django_admin_log.user_id > auth_user.id
+
+// Note: UNIQUE constraints on multiple columns like
+// 'UNIQUE KEY auth_group_permissions_group_id_permission_id_0cd325b0_uniq (group_id,permission_id)'
+// are represented by comments above the respective tables in dbdiagram.io DSL,
+// as dbdiagram.io's primary method for showing uniqueness is at the column level (e.g., [unique])
+// or through primary keys. For composite unique keys, this comment notation is a common workaround.
+// For `tinyint(1)`, dbdiagram.io doesn't have a specific boolean type, but `tinyint` or `int` is common.
+// I've used `tinyint(1)` to stay closer to your SQL, but you might prefer to map it to `boolean` if dbdiagram.io supports it or for clarity.
+// `longtext` can be represented as `text`.
+// `datetime(6)` is represented as `datetime`.
+// `smallint(5) unsigned` is represented as `smallint`. dbdiagram.io doesn't explicitly support unsigned, but the type is smallint.
+
+
