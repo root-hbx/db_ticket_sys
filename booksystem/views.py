@@ -22,8 +22,8 @@ ADMIN_ID = 1
 # 管理员后台财务管理
 # 统计航空公司每周、每月，每年营业收入情况。
 def admin_finance(request):
-    all_flights = Flight.objects.all()
-    all_flights = sorted(all_flights, key=attrgetter('leave_time'))  # 将所有车次按照出发时间排序
+    all_Trains = Flight.objects.all()
+    all_Trains = sorted(all_Trains, key=attrgetter('leave_time'))  # 将所有车次按照出发时间排序
 
     # 将车次每天的输入打上不同的时间标签 [周，月，日]
     week_day_incomes = []
@@ -34,7 +34,7 @@ def admin_finance(request):
     week_set = set()
     month_set = set()
     year_set = set()
-    for flight in all_flights:
+    for flight in all_Trains:
         if flight.income > 0:  # 只统计有收入的车次
             # 打上周标签
             this_week = flight.leave_time.strftime('%W')  # datetime获取周
@@ -83,8 +83,8 @@ def admin_finance(request):
     passengers = User.objects.exclude()  # 去掉管理员
     order_set = set()
     for p in passengers:
-        # flights = Flight.objects.filter(user=p)
-        # for f in flights:
+        # Trains = Flight.objects.filter(user=p)
+        # for f in Trains:
         #     route = f.leave_city + ' → ' + f.arrive_city
         #     order = ClassOrder(p.username, f.name, route, f.leave_time, f.price)
         #     order_set.add(order)
@@ -129,9 +129,9 @@ def user_operation(request):
         #     return render(request, 'booksystem/admin_finance.html', context)
         # 如果用户是普通用户，render用户的车票信息 user_info
         # else:
-            booked_flights = Flight.objects.filter(user=request.user)  # 从 booksystem_flight_user 表过滤出该用户订的车次
+            booked_Trains = Flight.objects.filter(user=request.user)  # 从 booksystem_flight_user 表过滤出该用户订的车次
             context = {
-                'booked_flights': booked_flights,
+                'booked_Trains': booked_Trains,
                 'username': request.user.username,  # 导航栏信息更新
             }
             return render(request, 'booksystem/user_operation.html', context)
@@ -148,7 +148,7 @@ def user_bill(request):
         # 如果用户是普通用户，render用户的车票信息 user_info
         else:
             order_set = set()
-            # flights = Flight.objects.filter(user=request.user)
+            # Trains = Flight.objects.filter(user=request.user)
             orders = Order.objects.filter(user=request.user)
             for o in orders:
                 route = o.flight.leave_city + ' → ' + o.flight.arrive_city
@@ -168,7 +168,7 @@ def user_bill(request):
                     o.flight.leave_time, o.flight.price,
                     pay_information, fetch_information, refund_information)
                 order_set.add(order)
-            # booked_flights = Flight.objects.filter(user=request.user)  # 从 booksystem_flight_user 表过滤出该用户订的车次
+            # booked_Trains = Flight.objects.filter(user=request.user)  # 从 booksystem_flight_user 表过滤出该用户订的车次
             context = {
                 'order_set': order_set,
                 'username': request.user.username,  # 导航栏信息更新
@@ -189,10 +189,10 @@ def book_ticket(request, flight_id):
         return render(request, 'booksystem/login.html')
     else:
         flight = Flight.objects.get(pk=flight_id)
-        # 查看乘客已经订购的flights
-        booked_flights = Flight.objects.filter(user=request.user)  # 返回 QuerySet
+        # 查看乘客已经订购的Trains
+        booked_Trains = Flight.objects.filter(user=request.user)  # 返回 QuerySet
 
-        if flight in booked_flights:
+        if flight in booked_Trains:
             return render(request, 'booksystem/book_conflict.html')
 
         # book_flight.html 点确认之后，request为 POST 方法，虽然没有传递什么值，但是传递了 POST 信号
@@ -348,37 +348,37 @@ def result(request):
             print(passenger_ltime)
 
             # filter 可用车次
-            all_flights = Flight.objects.filter(leave_city=passenger_lcity, arrive_city=passenger_acity)
-            usable_flights = []
-            for flight in all_flights:  # off-set aware
+            all_Trains = Flight.objects.filter(leave_city=passenger_lcity, arrive_city=passenger_acity)
+            usable_Trains = []
+            for flight in all_Trains:  # off-set aware
                 flight.leave_time = flight.leave_time.replace(tzinfo=None)  # replace方法必须要赋值。。笑哭
                 if flight.leave_time.date() == passenger_ltime.date():  # 只查找当天的车次
-                    usable_flights.append(flight)
+                    usable_Trains.append(flight)
 
             # 按不同的key排序
-            usable_flights_by_ltime = sorted(usable_flights, key=attrgetter('leave_time'))  # 出发时间从早到晚
-            usable_flights_by_atime = sorted(usable_flights, key=attrgetter('arrive_time'))
-            usable_flights_by_price = sorted(usable_flights, key=attrgetter('price'))  # 价格从低到高
+            usable_Trains_by_ltime = sorted(usable_Trains, key=attrgetter('leave_time'))  # 出发时间从早到晚
+            usable_Trains_by_atime = sorted(usable_Trains, key=attrgetter('arrive_time'))
+            usable_Trains_by_price = sorted(usable_Trains, key=attrgetter('price'))  # 价格从低到高
 
             # 转换时间格式
             time_format = '%H:%M'
-            # for flight in usable_flights_by_ltime:
+            # for flight in usable_Trains_by_ltime:
             #     flight.leave_time = flight.leave_time.strftime(time_format)  # 转成了str
             #     flight.arrive_time = flight.arrive_time.strftime(time_format)
             #
-            # for flight in usable_flights_by_atime:
+            # for flight in usable_Trains_by_atime:
             #     flight.leave_time = flight.leave_time.strftime(time_format)  # 转成了str
             #     flight.arrive_time = flight.arrive_time.strftime(time_format)
 
             # 虽然只转换了一个list，其实所有的都转换了
-            for flight in usable_flights_by_price:
+            for flight in usable_Trains_by_price:
                 flight.leave_time = flight.leave_time.strftime(time_format)  # 转成了str
                 flight.arrive_time = flight.arrive_time.strftime(time_format)
 
             # 决定 search_head , search_failure 是否显示
             dis_search_head = 'block'
             dis_search_failure = 'none'
-            if len(usable_flights_by_price) == 0:
+            if len(usable_Trains_by_price) == 0:
                 dis_search_head = 'none'
                 dis_search_failure = 'block'
             context = {
@@ -387,9 +387,9 @@ def result(request):
                 'arrive_city': passenger_acity,
                 'leave_date': str(passenger_ldate),
                 # 搜索结果
-                'usable_flights_by_ltime': usable_flights_by_ltime,
-                'usable_flights_by_atime': usable_flights_by_atime,
-                'usable_flights_by_price': usable_flights_by_price,
+                'usable_Trains_by_ltime': usable_Trains_by_ltime,
+                'usable_Trains_by_atime': usable_Trains_by_atime,
+                'usable_Trains_by_price': usable_Trains_by_price,
                 # 标记
                 'dis_search_head': dis_search_head,
                 'dis_search_failure': dis_search_failure
