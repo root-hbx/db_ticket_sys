@@ -151,6 +151,23 @@ python3 manage.py runserver
 - 用户名: admin
 - 密码: 123456
 
+PS: 
+
+重置admin密码（如果忘记密码）
+
+```sh
+python3 manage.py shell
+```
+
+```sh
+from django.contrib.auth.models import User
+user = User.objects.get(username='admin')
+user.set_password('123456')  # 设置新密码
+user.save()
+print("admin password updated")
+exit()
+```
+
 ![alt text](./image/image-15.png)
 
 代码逻辑中通过 `login_user` 函数中已经有过判定，如果登录用户是管理员，则此时加载财务页面:
